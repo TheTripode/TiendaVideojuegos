@@ -2,6 +2,7 @@ package es.dam.di.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Library {
     private Long accountId;
@@ -22,8 +23,6 @@ public class Library {
         this.purchaseDate = purchaseDate;
         this.hoursPlayed = hoursPlayed;
     }
-
-    // --- Getters y Setters ---
 
     public Long getAccountId() {
         return accountId;
@@ -55,5 +54,28 @@ public class Library {
 
     public void setHoursPlayed(BigDecimal hoursPlayed) {
         this.hoursPlayed = hoursPlayed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return Objects.equals(accountId, library.accountId) && Objects.equals(videogameId, library.videogameId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(accountId, videogameId);
+    }
+
+    @Override
+    public String toString() {
+        return "Library{" +
+                "accountId=" + accountId +
+                ", videogameId=" + videogameId +
+                ", purchaseDate=" + purchaseDate +
+                ", hoursPlayed=" + hoursPlayed +
+                '}';
     }
 }

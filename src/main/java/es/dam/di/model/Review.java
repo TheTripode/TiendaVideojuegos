@@ -1,6 +1,7 @@
 package es.dam.di.model;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Review {
     private Long id;
@@ -72,5 +73,30 @@ public class Review {
 
     public void setPublicationDate(LocalDate publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Review review = (Review) o;
+        return Objects.equals(id, review.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return "Review{" +
+                "id=" + id +
+                ", accountId=" + accountId +
+                ", videogameId=" + videogameId +
+                ", recommended=" + recommended +
+                ", comment='" + comment + '\'' +
+                ", publicationDate=" + publicationDate +
+                '}';
     }
 }

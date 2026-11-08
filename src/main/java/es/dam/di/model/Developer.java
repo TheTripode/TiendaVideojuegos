@@ -1,5 +1,7 @@
 package es.dam.di.model;
 
+import java.util.Objects;
+
 public class Developer {
     private Long id;
     private String name;
@@ -30,5 +32,26 @@ public class Developer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Developer developer = (Developer) o;
+        return Objects.equals(id, developer.id) && Objects.equals(name, developer.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
+    }
+
+    @Override
+    public String toString() {
+        return "Developer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
