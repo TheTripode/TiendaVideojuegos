@@ -51,8 +51,8 @@ public class Main {
         cat2 = categoryRepo.save(cat2);
         System.out.println("Categorias creadas: " + cat1.getName() + ", " + cat2.getName());
 
-        Videogame game1 = new Videogame("Elden Ring", new Price(59.99), LocalDate.of(2022, 2, 25), dev1.getId());
-        Videogame game2 = new Videogame("Hollow Knight", new Price(14.99), LocalDate.of(2017, 2, 24), dev2.getId());
+        Videogame game1 = new Videogame("Elden Ring", new Price(59.99), LocalDate.of(2022, 2, 25), dev1.getId(), List.of(cat1.getId()));
+        Videogame game2 = new Videogame("Hollow Knight", new Price(14.99), LocalDate.of(2017, 2, 24), dev2.getId(), List.of(cat2.getId()));
         game1 = videogameRepo.save(game1);
         game2 = videogameRepo.save(game2);
         System.out.println("Videojuegos creados: " + game1.getTitle() + ", " + game2.getTitle());

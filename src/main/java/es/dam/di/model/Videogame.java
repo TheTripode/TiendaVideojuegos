@@ -1,6 +1,8 @@
 package es.dam.di.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Videogame {
@@ -9,20 +11,27 @@ public class Videogame {
     private Price price;
     private LocalDate releaseDate;
     private Long developerId;
+    private List<Long> categoryIds;
 
     public Videogame() {
+        this.categoryIds = new ArrayList<>();
     }
 
     public Videogame(String title, Price price, LocalDate releaseDate, Long developerId) {
-        this(null, title, price, releaseDate, developerId);
+        this(null, title, price, releaseDate, developerId, new ArrayList<>());
     }
 
-    public Videogame(Long id, String title, Price price, LocalDate releaseDate, Long developerId) {
+    public Videogame(String title, Price price, LocalDate releaseDate, Long developerId, List<Long> categoryIds) {
+        this(null, title, price, releaseDate, developerId, categoryIds);
+    }
+
+    public Videogame(Long id, String title, Price price, LocalDate releaseDate, Long developerId, List<Long> categoryIds) {
         this.id = id;
         this.title = title;
         this.price = price;
         this.releaseDate = releaseDate;
         this.developerId = developerId;
+        this.categoryIds = categoryIds != null ? categoryIds : new ArrayList<>();
     }
 
     public Long getId() {
@@ -65,6 +74,14 @@ public class Videogame {
         this.developerId = developerId;
     }
 
+    public List<Long> getCategoryIds() {
+        return categoryIds;
+    }
+
+    public void setCategoryIds(List<Long> categoryIds) {
+        this.categoryIds = categoryIds;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -86,6 +103,7 @@ public class Videogame {
                 ", price=" + price +
                 ", releaseDate=" + releaseDate +
                 ", developerId=" + developerId +
+                ", categoryIds=" + categoryIds +
                 '}';
     }
 }
